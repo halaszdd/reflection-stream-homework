@@ -41,54 +41,51 @@ public class Homework1 {
      * Prints the declared methods of java.lang.String with at least one boolean parameter, sorted by name.
      */
     public void streamPipeline5() {
-        // TODO
+        Arrays.stream(java.lang.String.class.getMethods()).filter(c -> Arrays.stream(c.getParameterTypes()).anyMatch(p -> p == boolean.class)).sorted(Comparator.comparing(c -> 			    		c.getName())).forEach(System.out::println);
     }
 
     /**
      * Prints the declared methods of java.lang.String whose parameters are all of type int, sorted by name.
      */
     public void streamPipeline6() {
-        // TODO
+        Arrays.stream(java.lang.String.class.getMethods()).filter(c -> Arrays.stream(c.getParameterTypes()).allMatch(p -> p == int.class) && c.getParameterCount() != 0).sorted(Comparator.comparing(c -> 		c.getName())).forEach(System.out::println);
     }
 
     /**
      * Returns the longest name of the declared methods of java.lang.String.
      */
     public String streamPipeline7() {
-        // TODO
-        return null;
+        
+        return Arrays.stream(java.lang.String.class.getMethods()).map(s -> s.getName()).max(Comparator.comparingInt(n -> n.length())).get();
     }
 
     /**
      *  Returns the longest one from the names of the public declared methods of java.lang.String.
      */
     public String streamPipeline8() {
-        // TODO
-        return null;
+        return Arrays.stream(java.lang.String.class.getMethods()).filter(s -> s.getModifiers() == java.lang.reflect.Modifier.PUBLIC).map(s -> s.getName()).max(Comparator.comparingInt(s -> 		 		s.length())).get();
     }
 
     /**
      * Returns summary statistics about the number of parameters for the declared methods of java.lang.String.
      */
     public IntSummaryStatistics streamPipeline9() {
-        // TODO
-        return null;
+        
+        return Arrays.stream(java.lang.String.class.getMethods()).mapToInt(s -> s.getParameterCount()).summaryStatistics();
     }
 
     /**
      * Returns the maximum number of parameters accepted by the declared methods of java.lang.String.
      */
     public int streamPipeline10() {
-        // TODO
-        return 0;
+        return Arrays.stream(java.lang.String.class.getMethods()).mapToInt(s -> s.getParameterCount()).max().getAsInt();
     }
 
     /**
      * Returns the declared method of java.lang.String with the most number of parameters.
      */
     public Method streamPipeline11() {
-        // TODO
-        return null;
+        return Arrays.stream(java.lang.String.class.getMethods()).max(Comparator.comparingInt(s -> s.getParameterCount())).get();
     }
 
     /**
