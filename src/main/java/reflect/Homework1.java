@@ -12,7 +12,8 @@ public class Homework1 {
      * Prints the declared methods of java.lang.String sorted by name.
      */
     public void streamPipeline1() {
-        // TODO
+        Arrays.stream(java.lang.String.class.getMethods()).sorted(Comparator.comparing(m -> m.getName())).forEach(System.out::println);
+
     }
 
     /**
