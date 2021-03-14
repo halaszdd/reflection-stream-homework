@@ -20,7 +20,7 @@ public class Homework1 {
      *  Prints all distinct names of the declared methods of java.lang.String sorted alphabetically.
      */
     public void streamPipeline2() {
-        // TODO
+        Arrays.stream(java.lang.String.class.getMethods()).sorted(Comparator.comparing(m -> m.getName())).map(m -> m.getName()).distinct().forEach(System.out::println);
     }
 
     /**
